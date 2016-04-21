@@ -1,3 +1,4 @@
+# encoding: utf-8
 # Use this hook to configure WeixinRailsMiddleware bahaviors.
 WeixinRailsMiddleware.configure do |config|
 
@@ -7,13 +8,20 @@ WeixinRailsMiddleware.configure do |config|
   ## Config public_account_class if you SAVE public_account into database ##
   # Th first configure is fit for your weixin public_account is saved in database.
   # +public_account_class+ The class name that to save your public_account
-  # config.public_account_class = "Supplier"#PublicAccount"
+  # config.public_account_class = "PublicAccount"
 
   ## Here configure is for you DON'T WANT TO SAVE your public account into database ##
   # Or the other configure is fit for only one weixin public_account
   # If you config `weixin_token_string`, so it will directly use it
-  config.weixin_token_string = 'a098jb8f4e770c86ba18vjec'
+  config.weixin_token_string = '8cb40418681ff5c785753788'
   # using to weixin server url to validate the token can be trusted.
-  config.weixin_secret_string = '9ij5oBQ_z2SNZPI-sKyblpvJmuekgHvc'
+  config.weixin_secret_string = '4aJzThSwmBdQbiF5j0uU4UNKge2xhbIS'
+  # 加密配置，如果需要加密，配置以下参数
+  config.encoding_aes_key = 'e051fb86fefaeadf21dd725398806ff25f7b3a03d44'
+  config.app_id = "wx207dae9cbbaf8fcf"
+
+  ## You can custom your adapter to validate your weixin account ##
+  # Wiki https://github.com/lanrion/weixin_rails_middleware/wiki/Custom-Adapter
+  # config.custom_adapter = "MyCustomAdapter"
 
 end
