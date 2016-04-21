@@ -1,0 +1,102 @@
+<div class='columns medium-6'>
+  <div class="button-group">
+      <%=link_to "未提现",admin_rebates_path(:sold=>0),:class=>"button"%>
+      <%=link_to "已提现",admin_rebates_path(:sold=>1),:class=>"button"%>
+  </div>
+</div>
+
+<%if flash[:notice] && flash[:notice].is_a?(Hash)%>
+<div id="import_log_list" class="alert columns medium-3">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <ul>
+    <%flash[:notice].each do |row_no,msg|%>
+        <% if row_no.to_i < 2+5 %>
+          <li>行号[<%=row_no%>] : <%=msg%></li>
+        <%else%>
+          <li class="hide">行号[<%=row_no%>] : <%=msg%></li>
+        <%end%>
+    <%end%>
+  </ul>
+  <%=link_to "显示全部","#",:id=>"show_all"  if flash[:notice].size > 5%>
+</div>
+<%end%>
+
+<div class='columns medium-3'>
+<%=form_for :search,:url=>admin_rebates_path,:html=>{:class=>"form-search"},:method=>:get do |f|%>
+  <div class="input-group">
+    <%=f.text_field :key,:placeholder=>"卡号",:value=>params[:search]&&params[:search][:key],class:'input-group-field'%>
+    <div class="input-group-button">
+    <%=f.submit "搜索",:class=>"button"%>
+    </div>
+  </div>
+<%end%>
+</div>
+
+<div class="medium-2 columns">
+  <%=form_for :rebate,:url=>export_admin_rebates_path,:method=>:post do |f|%>
+    <%= f.hidden_field :select_all,:class=>"sel_operation", :value => 0 %>
+
+      <%=f.submit "导出",:class=>"export_button button" %>
+  <%end%> 
+</div> 
+
+
+
+<div class='sel_banner columns small-12' style="display:none">
+  您当前选定了<a class='sel_nums'>0</a>条记录！  <a href='#' class='cancel_all'>取消选定</a> <a href='#' class='sel_all'>选定全部</a>
+  <p class="total_rebate hidden"><%=@rebates_total%></p>
+</div>
+
+<table class="table table-bordered table-hover" id="rebates_list">
+  <tr>
+    <th>
+        <%=check_box_tag "select_all","all"%>
+        <label for="select_all" class="inline">全选</label>  
+    </th>
+    <th>卡号</th>
+    <th>面值</th>
+    <th>类型</th>
+    <th>销售状态</th>
+    <th>激活时间</th>
+    <th>使用状态</th>
+    <th>付款状态</th>
+    <th>卡状态</th>
+    <th>使用者手机</th>
+
+    <th>绑定银行</th>
+    <th>操作</th>
+  </tr>
+  <% @rebates.each do |rebate| %>
+  <tr id="rebate_<%=rebate.id%>">
+    <td><%=check_box_tag "selected_rebates[]", rebate.id,false,:class =>'operate_ids'%></td>
+    
+    <!-- <td >
+        <%=link_to admin_rebate_path(rebate),:class=>"editable",:remote=>"true" do%>
+            <%=image_tag "finder_drop_arrow.gif"%>
+        <%end%> 
+    </td> -->
+
+    <td><%=link_to  rebate.id,admin_rebate_path(rebate) %></td>
+    <td>¥<%= rebate.amount %></td>
+
+    <td><%= rebate.status %></td>   
+   
+    <td>
+      <%#= rebate.member_rebate.bank_name if !rebate.member_rebate.nil?%><br>
+      <%#= rebate.member_rebate.bank_rebate_no if !rebate.member_rebate.nil?%>
+    </td>
+    <td>
+        <%#=link_to "日志",logs_admin_rebate_path(rebate)%>
+        <%#=link_to "取消订单",cancel_order_admin_rebate_path(rebate),:method=>:put,:confirm=>"确定取消订单？" if rebate.sale_status && !rebate.pay_status && rebate.normal?%>
+
+        <%unless rebate.status%>
+          
+        <%end%>
+        <%=link_to "通联",allinpay_admin_rebate_path(rebate)%>
+    </td>
+  </tr>
+  <% end %>
+</table>
+<div class="pagination">
+<%= will_paginate @rebates,renderer: FoundationPagination::Rails%>
+</div>
