@@ -1,6 +1,7 @@
 <h3 class="text-center">二维码生成页面</h3>
 
 <div class="row">
+  <% if @shops %>
   <% @shops.each_with_index do |shop, index| %>
   <div class="columns medium-3">
     <div id="qrcode-<%= shop.id %>" class="qrcode-lists" data-shopid="<%= shop.id %>"></div>
@@ -14,6 +15,9 @@
     </div>
   </div>
   <div class="clear"></div>
+  <% end %>
+  <% else %>
+  暂无可用二维码，请先生成一些Shop
   <% end %>
 </div>
 
