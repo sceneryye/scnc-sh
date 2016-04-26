@@ -1,0 +1,43 @@
+<h3 class="text-center">二维码生成页面</h3>
+
+<div class="row">
+  <% @shops.each_with_index do |shop, index| %>
+  <div class="columns medium-3">
+    <div id="qrcode-<%= shop.id %>" class="qrcode-lists" data-shopid="<%= shop.id %>"></div>
+    <div class="shop-id text-center">
+      <span>shop_id:
+        <span class="ids"><%= shop.id %></span>
+      </span>
+      <span class="used">account_id:
+        <span class="ids"><%= shop.account_id.present? ? shop.account_id : 'None' %></span>
+      </span>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  $('.qrcode-lists').each(function () {
+    var id = $(this).data('shopid');
+    var html_id = 'qrcode-' + id;
+    var url = 'http://www.scnc-sh.com?shop_id=' + id;
+    var qrcode = new QRCode(document.getElementById(html_id), url);
+  })
+</script>
+
+<style>
+  .shop-id {
+    margin-top: 10px;
+  }
+  .columns {
+    margin-top: 30px;
+  }
+  .used {
+    margin-left: 20px;
+  }
+  .ids {
+    color: red;
+  }
+
+</style>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423113123) do
+ActiveRecord::Schema.define(version: 20160426053851) do
 
   create_table "brands", primary_key: "brand_id", force: :cascade do |t|
     t.string  "brand_name",     limit: 50,                            null: false
@@ -2241,6 +2241,14 @@ ActiveRecord::Schema.define(version: 20160423113123) do
     t.text    "param",           limit: 4294967295
     t.integer "update_modified", limit: 4
   end
+
+  create_table "shops", force: :cascade do |t|
+    t.integer  "account_id", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "shops", ["account_id"], name: "index_shops_on_account_id", using: :btree
 
   create_table "x_articles", force: :cascade do |t|
     t.string   "title",      limit: 255

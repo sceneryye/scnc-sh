@@ -5,6 +5,7 @@ class Account < ActiveRecord::Base
 
 	self.table_name = "sdb_pam_account"	
 	attr_accessor :license,:current_password
+  enum role: [:member, :doctor, :agency]
 
 	belongs_to :manager,:foreign_key=>"account_id"
   	belongs_to :supplier, :foreign_key=>"supplier_id"
@@ -29,11 +30,11 @@ class Account < ActiveRecord::Base
 	#validates :login_password_confirmation,:presence=>{:presence=>true,:message=>"请填写确认密码"}
 	# validates :email,:presence=>{:presence=>true,:message=>"请填写邮箱"}
 	# validates :email,:format=>{:with=>/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,:message=>"邮箱格式不正确",:multiline => true},
-					    :if=>Proc.new{ |c| c.email.present? }
+					    # :if=>Proc.new{ |c| c.email.present? }
 
 	# validates :mobile,:presence=>{:presence=>true,:message=>"请填写手机"}
 	# validates :mobile,:format=>{:with=>/^\d{11}$/,:message=>"手机号码必须是11位数字",:multiline => true},
-					    :if=>Proc.new{ |c| c.mobile.present? }
+					    # :if=>Proc.new{ |c| c.mobile.present? }
 
     validates :license, :presence=>{:presence=>true,:message=>"您还没有阅读注册协议"}, :if=>Proc.new{ |c| c.new_record? }
 

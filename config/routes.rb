@@ -2,6 +2,11 @@
 require 'httpclient'
 Modengke::Application.routes.draw do
 
+  resources :shops
+  get 'qrcodes', to: 'qrcodes#index'
+
+  get 'qrcodes/show'
+
   mount WeixinRailsMiddleware::Engine, at: "/"
 
   root :to=>"home#index",:constraints=>{ :subdomain=>/^(www)?$/ }
