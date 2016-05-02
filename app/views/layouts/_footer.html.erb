@@ -26,7 +26,7 @@
     else'users'
       @users_active = 'active'
   end%>
-  <div class="expanded button-group show-for-small-only ">
+  <div class="expanded button-group hide-for-large ">
     <%=link_to root_path,class: "button #{@home_active}" do%>
       <i class="fa fa-home"></i>
     <%end%>
