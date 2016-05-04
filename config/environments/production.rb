@@ -26,11 +26,10 @@ Modengke::Application.configure do
             :address              => "smtp.exmail.qq.com",
             :port                 => 25,
             :domain               => 'qq.com',
-            :user_name            => 'cs@iotps.com',
-            :password             => 'iotps1234',
+            :user_name            => 'cs@scnc-sh.com',
+            :password             => 'scncsh1234',
             :authentication       => 'plain',
             :enable_starttls_auto => true  }
-
 
 
   # Defaults to nil and saved in location specified by config.assets.prefix
