@@ -24,7 +24,7 @@ class Brand < ActiveRecord::Base
 	scope :menu_brands,->{order("ordernum asc,slug asc")}
 
 
-	validates_presence_of :brand_name,:message=>"基地名称不能为空"
+	validates_presence_of :brand_name,:message=>"专家名称不能为空"
 	validates_presence_of :slug,:message=>"访问地址不能为空"
 	validates_uniqueness_of :slug,:message=>"您输入的访问地址已经存在"
 

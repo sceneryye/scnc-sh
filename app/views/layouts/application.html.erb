@@ -53,7 +53,7 @@
               </ul>
             </li>
             <li class="has-submenu">
-              <%=link_to '基地风光', brands_path, class:"menu-link #{@brand_active}"%>
+              <%=link_to '专家工作室', brands_path, class:"menu-link #{@brand_active}"%>
               <ul class="submenu menu vertical" data-submenu>
               <%@menu_brands.each do |brand|%>
                 <li><%=link_to brand.brand_name, brand_path(brand)%></li> 

@@ -28,7 +28,7 @@
 
     <%if current_admin.has_right_of("brand_adms","index")%>
           <li class="<%='active' if controller_name=='brand_adms'%>">
-            <%=link_to "基地管理",admin_brand_adms_path%>
+            <%=link_to "专家管理",admin_brand_adms_path%>
           </li>
     <%end%>
     <%if current_admin.has_right_of("suppliers","index")%>

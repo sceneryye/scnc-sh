@@ -7,7 +7,7 @@ class OfflineCoupon < ActiveRecord::Base
 
 
 	validates_presence_of :name, :message=>"名称不能为空"
-	validates_presence_of :brand_id, :message=>"基地不能为空"
+	validates_presence_of :brand_id, :message=>"专家不能为空"
 	validates_presence_of :cover_urls, :message=>"封面不能为空"
 
 

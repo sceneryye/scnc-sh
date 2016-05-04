@@ -4,12 +4,12 @@
       </li>
       
       <%if action_name == 'index'%>
-              <li class="active">基地专区</li>
+              <li class="active">专家专区</li>
       <%end%>
 
       <%if action_name == 'show'%>
             <li>
-              <%=link_to "基地专区", brands_path%>
+              <%=link_to "专家专区", brands_path%>
             </li>
             <li class="active">
               <%=@brand.brand_name if @brand%>

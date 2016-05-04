@@ -60,7 +60,7 @@ class Good < ActiveRecord::Base
     bold = Spreadsheet::Format.new :color => :black, :weight => :bold, :size => 10
     sheet1.row(0).default_format = bold
 
-    sheet1.row(0).concat %w{类型  商品编号 规格货号 分类 基地 商品名称 上架 规格 库存}
+    sheet1.row(0).concat %w{类型  商品编号 规格货号 分类 专家 商品名称 上架 规格 库存}
     field_count=9
 
     fields.each do |field|
@@ -76,7 +76,7 @@ class Good < ActiveRecord::Base
       sheet1[row_count,0] = good.good_type&&good.good_type.name #类型
       sheet1[row_count,1] = good.bn.to_s  #商品编号
       sheet1[row_count,3] = good.cat&&good.cat.full_path_name #分类
-      sheet1[row_count,4] = good.brand&&good.brand.brand_name #基地
+      sheet1[row_count,4] = good.brand&&good.brand.brand_name #专家
       sheet1[row_count,5] = good.name #商品名称
       sheet1[row_count,6] = good.marketable=="true" ? "Y" : "N" #上架
       sheet1[row_count,7] = good.specs.order("sdb_b2c_specification.spec_id asc").pluck(:spec_name).join("|") #规格
@@ -125,7 +125,7 @@ class Good < ActiveRecord::Base
   end
 
   def self.export_cvs(fields, goods)
-    field_name = [ '类型', '商品编号','规格货号','分类','基地','商品名称','上架','规格','库存']
+    field_name = [ '类型', '商品编号','规格货号','分类','专家','商品名称','上架','规格','库存']
     #price_fields = convert_array(fields)  #csv文件的头（标题）
     field_name += fields
 
@@ -137,7 +137,7 @@ class Good < ActiveRecord::Base
                  good.bn.to_s,  #商品编号
                  nil, #规格货号
                  good.cat&&good.cat.full_path_name, #分类
-                 good.brand&&good.brand.brand_name, #基地
+                 good.brand&&good.brand.brand_name, #专家
                  good.name,#商品名称
                  good.marketable=="true" ? "Y" : "N", #上架
                  spec_names, #规格
@@ -156,7 +156,7 @@ class Good < ActiveRecord::Base
                       good.bn.to_s, #商品编号
                       product.bn.to_s, #规格货号
                       nil, #分类
-                      nil, #基地
+                      nil, #专家
                       product.name, #商品名称
                       product.marketable=="true" ? "Y" : "N", #上架
                       spec_values, #规格
@@ -196,7 +196,7 @@ class Good < ActiveRecord::Base
                'col:商品编号',
                'col:规格货号',
                'col:分类',
-               'col:基地',
+               'col:专家',
                'col:市场价',
                'col:销售价',
                'col:商品名称',
@@ -211,7 +211,7 @@ class Good < ActiveRecord::Base
                  good.bn.to_s,  #商品编号
                  nil, #规格货号
                  good.cat&&good.cat.full_path_name, #分类
-                 good.brand&&good.brand.brand_name, #基地
+                 good.brand&&good.brand.brand_name, #专家
                  nil,  #市场价
                  nil, #销售价
                  good.name,#商品名称
@@ -227,7 +227,7 @@ class Good < ActiveRecord::Base
                    good.bn.to_s, #商品编号
                    product.bn.to_s, #规格货号
                    nil, #分类
-                   nil, #基地
+                   nil, #专家
                    product.mktprice.to_f, #市场价
                    product.price.to_f,  #销售价
                    product.name, #商品名称

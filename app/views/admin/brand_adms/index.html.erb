@@ -1,26 +1,26 @@
 <div class='row columns'>
 <h4>
-	基地列表	
+	专家列表	
 </h4>
 </div>
 <table>
 	<tr>
 		<td>
-		<%=link_to "新增基地",new_admin_brand_adm_path,:class=>"button"%>
+		<%=link_to "新增专家",new_admin_brand_adm_path,:class=>"button"%>
 	</td>
 	<td id="search">
 	  <%=form_for :search,:url=>admin_brand_adms_path,:html=>{:class=>"form-search"},:method=>:get do |f|%>
 	  <%=hidden_field_tag :scope,params[:scope]%>
-	  <%=f.text_field :key,:placeholder=>"基地名",:value=>params[:search]&&params[:search][:key],class:'float-left'%>
+	  <%=f.text_field :key,:placeholder=>"专家名",:value=>params[:search]&&params[:search][:key],class:'float-left'%>
 	  <%=f.submit "搜索",:class=>"button float-right"%>
 	  <%end%>
 	</td>
 	</tr>
 </table>
 	<div class='columns small-4'>
-	  <span>默认只显示有效基地,</span>
-	  <%=link_to "显示全部基地","?scope=unscoped" if params[:scope].blank?%>
-	  <%=link_to "只显示有效基地","?" if params[:scope]  == 'unscoped'%>
+	  <span>默认只显示有效专家,</span>
+	  <%=link_to "显示全部专家","?scope=unscoped" if params[:scope].blank?%>
+	  <%=link_to "只显示有效专家","?" if params[:scope]  == 'unscoped'%>
 	</div>
 <table class="table table-bordered table-hover">
   <tr>

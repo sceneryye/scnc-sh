@@ -6,7 +6,7 @@
       </div>
     </div>
      <div class="columns small-6">
-      <label class="control-label">基地</label>
+      <label class="control-label">专家</label>
       <div class="controls">
          <%=f.select :brand_id, Brand.all.collect {|b| [b.brand_name,b.brand_id]},{:include_blank=>"请选择"}%>
       </div>

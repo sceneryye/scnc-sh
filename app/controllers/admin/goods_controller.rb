@@ -40,7 +40,7 @@ module Admin
 
           workbook.add_worksheet(:name => "Product") do |sheet|
 
-          sheet.add_row ['供应商',"类型","商品编号","规格货号","分类","基地","图片","商品名称","上架", "规格","商品描述","库存",fields[0],fields[1],fields[2],fields[3],fields[4],fields[5]],
+          sheet.add_row ['供应商',"类型","商品编号","规格货号","分类","专家","图片","商品名称","上架", "规格","商品描述","库存",fields[0],fields[1],fields[2],fields[3],fields[4],fields[5]],
                         :style=>head_cell
 
             row_count=0

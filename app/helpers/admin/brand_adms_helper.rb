@@ -11,6 +11,6 @@ module Admin::BrandAdmsHelper
 	end
 
 	def brand_statuses
-		{:new=>"新进基地",:normal=>"正常",:special=>"重点突出(热门)",:coming=>"coming soon",:disabled=>"暂不合作"}
+		{:new=>"新进专家",:normal=>"正常",:special=>"重点突出(热门)",:coming=>"coming soon",:disabled=>"暂不合作"}
 	end
 end

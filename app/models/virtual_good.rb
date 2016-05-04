@@ -61,7 +61,7 @@ class VirtualGood < ActiveRecord::Base
 
 		bn_index  = header.index("col:商品编号")
 		cat_index  = header.index("col:分类")
-		brand_index  = header.index("col:基地")
+		brand_index  = header.index("col:专家")
 		price_index  = header.index("col:市场价")
 		name_index  = header.index("col:商品名称")
 		marketable_index  = header.index("col:上架")
@@ -113,8 +113,8 @@ class VirtualGood < ActiveRecord::Base
 			end
 
 			brand_name = row[brand_index] if brand_index
-			row_error << "基地为空" if brand_name.blank?
-			row_error << "基地不存在" if brand_name.present? && !Brand.find_by_brand_name(brand_name)
+			row_error << "专家为空" if brand_name.blank?
+			row_error << "专家不存在" if brand_name.present? && !Brand.find_by_brand_name(brand_name)
 
 
 			errors[index+2]  = row_error if row_error.present?

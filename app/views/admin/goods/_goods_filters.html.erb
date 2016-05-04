@@ -14,7 +14,7 @@
 		<%=hidden_field_tag :template,@template%>
 		
 		<div class="filter-item">
-			<%=f.select :brand, Brand.all.collect {|brand| [brand.brand_name, brand.brand_id] },:include_blank=>"请选择基地" %>
+			<%=f.select :brand, Brand.all.collect {|brand| [brand.brand_name, brand.brand_id] },:include_blank=>"请选择专家" %>
 		</div>
 
 		<div class="filter-item">

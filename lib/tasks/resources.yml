@@ -90,7 +90,7 @@ metas:
   edit.update: "编辑"
   destroy: "删除"
 brand_pages:
-  desc: "基地页"
+  desc: "专家页"
   index: "列表"
   toggle: "关闭/开启"
   reco: "推荐"
@@ -148,7 +148,7 @@ goods_types:
   edit.update: "编辑"
   destroy: "删除"
 brand_adms:
-  desc: "商品基地管理"
+  desc: "商品专家管理"
   index: "列表"
   new.create: "新建"
   edit.update: "编辑"
