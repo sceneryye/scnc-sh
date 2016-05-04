@@ -1,4 +1,4 @@
-<% provide :title, '上儿-母婴生态园-订单列表' %>
+<% provide :title, '上儿-母婴健康-订单列表' %>
 <%=render partial: '/memberships/cards/breadcrembs' , locals:{current:'我的订单'}%>
 <div class="button-group">
     <%=link_to "待付款订单",orders_member_path(:pay_status=>'0',:status=>'active'),class:"button hollow alert #{@unpaid}"%></li>
