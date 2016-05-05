@@ -30,14 +30,14 @@ WeixinRailsMiddleware::WeixinController.class_eval do
       when 'subscribe'
         title="您好！上海儿童营养中心欢迎您的到来！"
         desc ="中国领先的儿童营养与健康研究机构，中国儿童健康营养第一品牌。关爱母婴健康，关心儿童成长！"
-        pic_url="http://www.scnc-sh.com/images/show/welcome2.jpg"
+        pic_url="http://www.scnc-sh.com/assets/weixin_welcome.png"
         link_url="http://www.scnc-sh.com/?from=weixin_menu"
         articles = [generate_article(title, desc, pic_url, link_url)]
      
       else
          title="您好！上海儿童营养中心欢迎您的到来！"
         desc ="中国领先的儿童营养与健康研究机构，中国儿童健康营养第一品牌。关爱母婴健康，关心儿童成长！"
-        pic_url="http://www.scnc-sh.com/images/show/welcome.jpg"
+        pic_url="http://www.scnc-sh.com/assets/weixin_welcome.png"
         link_url="http://www.scnc-sh.com/?from=weixin_menu"
         articles = [generate_article(title, desc, pic_url, link_url)]
     end
