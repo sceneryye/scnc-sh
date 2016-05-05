@@ -13,14 +13,14 @@ class SessionsController < ApplicationController
 
     config.site = "https://open.weixin.qq.com/"
     config.api_site = "https://open.weixin.qq.com/"
-    config.client_id = "wxf9945fddc9b67aaa"
-    config.client_secret =  "b2248ee62274de8680d26e6e355c350a"
+    config.client_id = "wx207dae9cbbaf8fcf"
+    config.client_secret =  "5287d2dc17e0a56b28a50a868e261179"
     config.redirect_uri = "http://www.scnc-sh.com/auth/weixin/callback"
     config.ssl = { :ca_path=>"/usr/lib/ssl/certs" }
     config.authorize_uri = 'https://open.weixin.qq.com/connect/oauth2/authorize'
     config.access_token_uri = 'https://api.weixin.qq.com/sns/oauth2/access_token'
     config.path_prefix = '2/'
-    config.uid = 'gh_64cd6ce595eb'
+    config.uid = 'gh_c4c1e8f50362'
 
     supplier_id = 1
 

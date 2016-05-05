@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   include Breadcrumb
  
 
-  layout "survey"
+  layout "application"
 
   # before_filter :authorize_user!
   before_filter :adjust_format_for_mobile

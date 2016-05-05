@@ -15,7 +15,6 @@
 //= require foundation
 //= require ckeditor/init
 //= require foundation-datepicker.min
-//= require qrcode.min
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

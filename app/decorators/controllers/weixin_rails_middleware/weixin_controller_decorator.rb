@@ -5,10 +5,62 @@
 WeixinRailsMiddleware::WeixinController.class_eval do
 
   def reply
-    render xml: send("response_#{@weixin_message.MsgType}_message", {})
+
+     case @keyword
+      when '地址'
+        render xml: send("response_location_message", {})  
+      when 'TESTCOMPONENT_MSG_TYPE_TEXT' 
+        render xml: send("response_text_message", {})
+      else
+        render xml: send("response_news_message", {})    
+       #render xml: send("response_#{@weixin_message.MsgType}_message", {})
+    end
+
+   # render xml: send("response_#{@weixin_message.MsgType}_message", {})
   end
 
   private
+
+  def response_news_message(options={})
+    id = 1 #@weixin_public_account.id
+    user = @weixin_message.FromUserName
+    #user = @weixin_message.ToUserName
+    case @keyword
+     
+      when 'subscribe'
+        title="您好！上海儿童营养中心欢迎您的到来！"
+        desc ="鲶鱼沟人，用智慧和生命力，在这片土地上完成了伟大的孕育。在碱性环境里培植优质营养的碱地大米、五谷杂粮、养殖有机大雁和绿色河蟹，使之成为名副其实的北国鱼米之乡。"
+        pic_url="http://www.cq2016.cc/images/show/welcome2.jpg"
+        link_url="http://www.cq2016.cc/?from=weixin_menu"
+        articles = [generate_article(title, desc, pic_url, link_url)]
+     
+      else
+        desc =""
+        title="您好！昌麒生态园欢迎家人的到来！"
+        pic_url="http://www.cq2016.cc/images/show/welcome.jpg"
+        link_url="http://www.cq2016.cc/?from=weixin_menu"
+        articles = [generate_article(title, desc, pic_url, link_url)]
+    end
+    if articles
+      reply_news_message(articles)
+    end
+  end
+
+  def response_text_message(options={})
+    case @keyword
+    when 'TESTCOMPONENT_MSG_TYPE_TEXT'
+        message = 'TESTCOMPONENT_MSG_TYPE_TEXT_callback'
+    else
+      message="您好！#{@weixin_public_account.name},欢迎您！"
+    end
+
+    #reply_text_message("Your Message: #{@keyword}")
+
+   # message="您好！#{@weixin_public_account.name}欢迎您！"
+
+    # message="您好！昌麒生态园欢迎家人的到来！"
+    reply_text_message(message)
+  end
 
     def response_text_message(options={})
       reply_text_message("Your Message: #{@keyword}")
@@ -100,8 +152,24 @@ WeixinRailsMiddleware::WeixinController.class_eval do
     end
 
     # 点击菜单拉取消息时的事件推送
+   
     def handle_click_event
-      reply_text_message("你点击了: #{@keyword}")
+      case @keyword
+        when 'ON_SALE'
+          @keyword='on_sale'
+          response_news_message({})
+        when 'NEW'
+          @keyword='new'
+          response_news_message({})
+        when 'SHARE'
+          @keyword='share'
+          response_news_message({})
+        when 'Oauth'
+          @keyword='授权'
+          response_news_message({})
+        else
+          reply_text_message("你点击了: #{@keyword}")
+      end
     end
 
     # 点击菜单跳转链接时的事件推送
