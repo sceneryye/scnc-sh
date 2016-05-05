@@ -29,16 +29,16 @@ WeixinRailsMiddleware::WeixinController.class_eval do
      
       when 'subscribe'
         title="您好！上海儿童营养中心欢迎您的到来！"
-        desc ="鲶鱼沟人，用智慧和生命力，在这片土地上完成了伟大的孕育。在碱性环境里培植优质营养的碱地大米、五谷杂粮、养殖有机大雁和绿色河蟹，使之成为名副其实的北国鱼米之乡。"
-        pic_url="http://www.cq2016.cc/images/show/welcome2.jpg"
-        link_url="http://www.cq2016.cc/?from=weixin_menu"
+        desc ="中国领先的儿童营养与健康研究机构，中国儿童健康营养第一品牌。关爱母婴健康，关心儿童成长！"
+        pic_url="http://www.scnc-sh.com/images/show/welcome2.jpg"
+        link_url="http://www.scnc-sh.com/?from=weixin_menu"
         articles = [generate_article(title, desc, pic_url, link_url)]
      
       else
-        desc =""
-        title="您好！昌麒生态园欢迎家人的到来！"
-        pic_url="http://www.cq2016.cc/images/show/welcome.jpg"
-        link_url="http://www.cq2016.cc/?from=weixin_menu"
+         title="您好！上海儿童营养中心欢迎您的到来！"
+        desc ="中国领先的儿童营养与健康研究机构，中国儿童健康营养第一品牌。关爱母婴健康，关心儿童成长！"
+        pic_url="http://www.scnc-sh.com/images/show/welcome.jpg"
+        link_url="http://www.scnc-sh.com/?from=weixin_menu"
         articles = [generate_article(title, desc, pic_url, link_url)]
     end
     if articles
