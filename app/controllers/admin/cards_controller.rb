@@ -375,5 +375,7 @@ class Admin::CardsController < Admin::BaseController
     @card = Card.find(params[:id])
   end
 
+  
+
 
 end

@@ -45,20 +45,16 @@
           <ul class="dropdown menu" data-dropdown-menu>
             <li class="menu-text"><a href='/'><img src="/assets/logo.png"></a></li>
             <li class="has-submenu">
-              <%=link_to '产品中心', cats_path, class:"menu-link #{@product_active}"%>
-              <ul class="submenu menu vertical" data-submenu>
+              <%=link_to '产品中心', '#', class:"menu-link #{@product_active}"%>
+             <!--  <ul class="submenu menu vertical" data-submenu>
                <%@menu_categories.each do |category|%>
                 <li><%=link_to category.cat_name, cat_path(category)%></li> 
               <%end if @menu_categories%>
-              </ul>
+              </ul> -->
             </li>
             <li class="has-submenu">
-              <%=link_to '专家工作室', brands_path, class:"menu-link #{@brand_active}"%>
-              <ul class="submenu menu vertical" data-submenu>
-              <%@menu_brands.each do |brand|%>
-                <li><%=link_to brand.brand_name, brand_path(brand)%></li> 
-              <%end if @menu_brands%>
-              </ul>
+              <%=link_to '专家工作室', '#', class:"menu-link #{@brand_active}"%>
+             
             </li>
             <li class="has-submenu hide-for-small-only">
                <%=link_to '会员中心', member_path, class:"menu-link #{@member_active}"%>
@@ -74,8 +70,8 @@
                 <li><a href="/login">注册/登录</a></li>
                 <%end%>
               </ul>
-              <li><%=link_to '关于我们', page_path('aboutus'), class:"menu-link #{@page_active}"%></li>
-              <li class='hide-for-small-only'><%=link_to '联系我们', page_path('contactus'), class:"menu-link #{@page_active}"%></li>  
+             <!--  <li><%=link_to '关于我们', page_path('aboutus'), class:"menu-link #{@page_active}"%></li>
+              <li>class='hide-for-small-only'><%=link_to '联系我们', page_path('contactus'), class:"menu-link #{@page_active}"%></li>  -->
             </ul>
             </div>
             <div class="top-bar-right" style ='display:none'>
